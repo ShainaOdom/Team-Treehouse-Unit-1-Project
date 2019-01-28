@@ -55,7 +55,7 @@ function changeColor (){
 function printQuote(){
   var random = getRandomQuote(quotes);
   var color= changeColor();
-  var time;
+
   //creates random quote string with quote, source, year, and citation
   var html= '';
   html += '<p class="quote">' + random.quote + '</p>'
@@ -71,15 +71,14 @@ function printQuote(){
 
     // from https://www.w3schools.com/jsref/prop_style_backgroundcolor.asp
     document.body.style.backgroundColor = color// changes the background color with new quote
-
-    //https://www.w3schools.com/jsref/met_win_setinterval.asp
-    time= setInterval(printQuote, 8000); // automatically refreshes page after 8 seconds
 };
 //calls the print quote function
 printQuote();
 
+//https://www.w3schools.com/jsref/met_win_setinterval.asp
+time= setInterval(printQuote, 8000); // automatically refreshes page after 8 seconds
 
-/*
-  When the botton is click, a new quote and background color is generated
-*/
+
+//When the button is click, a new quote and background color is generated
+
 document.getElementById('loadQuote').addEventListener("click", printQuote, false)
