@@ -55,8 +55,9 @@ var quotes = [
 
 function getRandomQuote (array){
   var randomQuote = array[ Math.floor(Math.random() * array.length)];
-  return(randomQuote);
+  return randomQuote;
 };
+
 /***
   Create the `printQuote` function to:
    - call the `getRandomQuote` function and assign it to a variable.
@@ -67,8 +68,20 @@ function getRandomQuote (array){
    - set the `innerHTML` of the `quote-box` div to the HTML string.
 ***/
 
-
-
+function printQuote(){
+  var random = getRandomQuote(quotes);
+  var html= '';
+  html += '<p class="quote">' + random.quote + '</p>'
+  html += '<p class="source">' + random.source + '</p>'
+  if (random.citation) {
+    html += '<span class="citation">' + random.citation + '</span>';
+  }
+  if (random.year) {
+     html+= '<span class="year">' + random.year + '</span>';
+  }
+  document.getElementById('quote-box').innerHTML = html;
+};
+printQuote();
 
 /***
   When the "Show another quote" button is clicked, the event listener
@@ -77,7 +90,7 @@ function getRandomQuote (array){
   comment.
 ***/
 
-//document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
