@@ -42,7 +42,7 @@ function getRandomQuote (array){
 };
 
 
-/*changeColor function- selects random color from colors array*/
+/*changeColor function- returns a random color from colors array*/
 function changeColor (){
   var newColor = colors[ Math.floor(Math.random() * colors.length)];
   return newColor;
@@ -56,8 +56,8 @@ function printQuote(){
   var random = getRandomQuote(quotes);
   var color= changeColor();
   var time;
+  //creates random quote string with quote, source, year, and citation
   var html= '';
-
   html += '<p class="quote">' + random.quote + '</p>'
   html += '<p class="source">' + random.source
   if (random.year) {
@@ -67,18 +67,19 @@ function printQuote(){
     html += '<span class="citation">' + random.citation + '</span>';
     }
     + '</p>'
-
     document.getElementById('quote-box').innerHTML = html;
+
     // from https://www.w3schools.com/jsref/prop_style_backgroundcolor.asp
-        document.body.style.backgroundColor = color// changes the background color with new quote
+    document.body.style.backgroundColor = color// changes the background color with new quote
+
     //https://www.w3schools.com/jsref/met_win_setinterval.asp
-        time= setInterval(printQuote, 8000); // automatically refreshes page after 8 seconds
+    time= setInterval(printQuote, 8000); // automatically refreshes page after 8 seconds
 };
+//calls the print quote function
 printQuote();
 
 
 /*
   When the botton is click, a new quote and background color is generated
 */
-
 document.getElementById('loadQuote').addEventListener("click", printQuote, false)
