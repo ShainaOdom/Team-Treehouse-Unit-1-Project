@@ -46,7 +46,6 @@ var quotes = [
 ];
 
 
-
 /***
   Create the `getRandomQuote` function to:
    - generate a random number
@@ -54,9 +53,10 @@ var quotes = [
      `quotes` array.
 ***/
 
-
-
-
+function getRandomQuote (array){
+  var randomQuote = array[ Math.floor(Math.random() * array.length)];
+  return(randomQuote);
+};
 /***
   Create the `printQuote` function to:
    - call the `getRandomQuote` function and assign it to a variable.
@@ -77,7 +77,7 @@ var quotes = [
   comment.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+//document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
