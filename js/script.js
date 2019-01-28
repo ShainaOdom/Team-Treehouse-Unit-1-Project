@@ -1,6 +1,6 @@
-/***
+/*
   array of quotes with source, and optional year and citation
-***/
+*/
 var quotes = [
   {
     quote: 'Never let the fear of striking out keep you from playing the game',
@@ -28,46 +28,57 @@ var quotes = [
     year: 2009,
     source: 'The Help'
   }
-
 ];
 
+/* array of colors  for background*/
+var colors = ['slategray', 'plum', 'coral', 'powderblue', 'salmon', 'pink', 'teal', 'maroon'];
 
-/***
+/*
   getRandomQuote function- returns a random quote from the quotes array
-***/
-
+*/
 function getRandomQuote (array){
   var randomQuote = array[ Math.floor(Math.random() * array.length)];
   return randomQuote;
 };
 
-/***
+
+/*changeColor function- selects random color from colors array*/
+function changeColor (){
+  var newColor = colors[ Math.floor(Math.random() * colors.length)];
+  return newColor;
+}
+
+/*
   printQuote function- prints the random quote to the page with source
   and year/citation if available
-***/
-
+*/
 function printQuote(){
   var random = getRandomQuote(quotes);
+  var color= changeColor();
+  var time;
   var html= '';
+
   html += '<p class="quote">' + random.quote + '</p>'
-  html += '<p class="source">' + random.source + '</p>'
+  html += '<p class="source">' + random.source
   if (random.year) {
      html+= '<span class="year">' + random.year + '</span>';
   }
-  if (random.citation) {
+    if (random.citation) {
     html += '<span class="citation">' + random.citation + '</span>';
-  }
+    }
+    + '</p>'
+
     document.getElementById('quote-box').innerHTML = html;
+    // from https://www.w3schools.com/jsref/prop_style_backgroundcolor.asp
+        document.body.style.backgroundColor = color// changes the background color with new quote
+    //https://www.w3schools.com/jsref/met_win_setinterval.asp
+        time= setInterval(printQuote, 8000); // automatically refreshes page after 8 seconds
 };
 printQuote();
 
-/***
-  When the "Show another quote" button is clicked, the event listener
-  below will be triggered, and it will call, or "invoke", the `printQuote`
-  function.
-***/
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+/*
+  When the botton is click, a new quote and background color is generated
+*/
 
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+document.getElementById('loadQuote').addEventListener("click", printQuote, false)
