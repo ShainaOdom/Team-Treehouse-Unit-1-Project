@@ -20,13 +20,13 @@ var quotes = [
     quote: "Truth only means something when it's hard to admit.",
     source: 'Nicholas Sparks',
     year: 2008,
-    source: 'The Last Song'
+    citation: 'The Last Song'
   },
   {
     quote: 'You is kind. You is smart. You is important.',
     source: 'Kathryn Stockett',
     year: 2009,
-    source: 'The Help'
+    citation: 'The Help'
   }
 ];
 
@@ -79,6 +79,6 @@ printQuote();
 time= setInterval(printQuote, 8000); // automatically refreshes page after 8 seconds
 
 
-//When the button is click, a new quote and background color is generated
+//When the button is clicked, a new quote and background color is generated
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false)
